@@ -14,7 +14,7 @@ s.bind(("192.168.0.149", 5000))
 s.listen()
 
 connection, address = s.accept()
-
+"""
 while True:
     msg = connection.recv(4090)
     msg = msg.decode()
@@ -45,51 +45,70 @@ while True:
         bot.right()
         time.sleep(0.36)
         bot.stop()
+"""
 
-
-    elif msg == "0":
-        print("Stop")
-        res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {0}")
-        movement = res.fetchall()
-        movement = movement[0][0]
-        print(movement)
-    elif msg == "1":
-        print("Avanti")
+while True:
+    if msg ==  "1":
         res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {1}")
-        movement = res.fetchall()
-        movement = movement[0][0]
-        print(movement)
+        movement = res.fetchone()
+        mov = movement.split(";")
+        mov = mov.split(",")
+        for i in mov:  #bot. i[0] --> w (i[1]) --> 1000
+            if i[0] == "w":
+                bot.left(int(i[1]))
+            if i[0] == "a":
+                bot.left(int(i[1]))
+            if i[0] == "d":
+                bot.left(int(i[1]))
+            if i[0] == "x":
+                bot.stop()
+            
+        #print(mov)
     elif msg == "2":
-        print("Destra")
+        print("sinistra")
         res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {2}")
-        movement = res.fetchall()
-        movement = movement[0][0]
-        print(movement)
-    elif msg == "3":
-        print("Dietro")
-        res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {3}")
-        movement = res.fetchall()
-        movement = movement[0][0]
-        print(movement)
-    elif msg == "4":
-        print("Sinistra")
-        res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {4}")
-        movement = res.fetchall()
-        movement = movement[0][0]
-        print(movement)
-    elif msg == "5":
-        print("CurvaDestra")
-        res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {5}")
-        movement = res.fetchall()
-        movement = movement[0][0]
-        print(movement)
-    elif msg == "6":
-        print("CurvaSinistra")
-        res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {6}")
-        movement = res.fetchall()
-        movement = movement[0][0]
-        print(movement)
+        movement = res.fetchone()
+        mov = movement.split(";")
+        mov = mov.split(",")
+        for i in mov:  #bot. i[0] --> w (i[1]) --> 1000
+            if i[0] == "w":
+                bot.left(int(i[1]))
+            if i[0] == "a":
+                bot.left(int(i[1]))
+            if i[0] == "d":
+                bot.left(int(i[1]))
+            if i[0] == "x":
+                bot.stop()
 
+    elif msg == "3":
+        res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {3}")
+        movement = res.fetchone()
+        mov = movement.split(";")
+        mov = mov.split(",")
+        for i in mov:  #bot. i[0] --> w (i[1]) --> 1000
+            if i[0] == "w":
+                bot.left(int(i[1]))
+            if i[0] == "a":
+                bot.left(int(i[1]))
+            if i[0] == "d":
+                bot.left(int(i[1]))
+            if i[0] == "x":
+                bot.stop()
+
+    elif msg == "4":
+        res = cur.execute(f"SELECT Movimento FROM Percorso WHERE ID = {4}")
+        movement = res.fetchone()
+        mov = movement.split(";")
+        mov = mov.split(",")
+        for i in mov:  #bot. i[0] --> w (i[1]) --> 1000
+            if i[0] == "w":
+                bot.left(int(i[1]))
+            if i[0] == "a":
+                bot.left(int(i[1]))
+            if i[0] == "d":
+                bot.left(int(i[1]))
+            if i[0] == "x":
+                bot.stop()
 s.close()
 
 
